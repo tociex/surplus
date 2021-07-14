@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/tociex/.dotnet/store/|arch|/|tfm|",
+      "/home/tociex/.nuget/packages"
+    ]
+  }
+}
