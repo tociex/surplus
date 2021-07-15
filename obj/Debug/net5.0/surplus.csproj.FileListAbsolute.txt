@@ -155,3 +155,8 @@
 /home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Uom/Details.cshtml.g.cs
 /home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Uom/Edit.cshtml.g.cs
 /home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Uom/Index.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Subtipe/Create.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Subtipe/Delete.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Subtipe/Details.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Subtipe/Edit.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Subtipe/Index.cshtml.g.cs
