@@ -2,7 +2,7 @@
 @model IEnumerable<subtipe.Models.Subtipe>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Master Sub Tipe";
 }
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,7 +13,10 @@
     <h3>Master Subtipe</h3>
 
     <a asp-action="Create" class="btn btn-success"style="color:white"><i class="glyphicon glyphicon-plus"></i> Add Subtipe</a>
-    <br/>
+    <a asp-action="Index" class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i> Reload</a>
+  
+  
+  <br/>
     <br/>
     <div class="row">
         <div class="table-responsive">
@@ -53,6 +56,7 @@
                                         <a asp-action="Edit" asp-route-id="@item.Id"  class="btn btn-sm btn-primary" style="color:white"><i class="glyphicon glyphicon-pencil"></i></a> 
                                      
                                         <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                                        
                                     </td>
                                  
                                     

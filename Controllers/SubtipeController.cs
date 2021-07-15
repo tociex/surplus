@@ -46,6 +46,8 @@ namespace surplus.Controllers
         // GET: Subtipe/Create
         public IActionResult Create()
         {
+
+            ViewBag.Departments = _context.mastertipe.ToList();
             return View();
         }
 
@@ -72,12 +74,13 @@ namespace surplus.Controllers
             {
                 return NotFound();
             }
-
+            
             var subtipe = await _context.mastersubtipe.FindAsync(id);
             if (subtipe == null)
             {
                 return NotFound();
             }
+            ViewBag.Departments = _context.mastertipe.ToList();
             return View(subtipe);
         }
 

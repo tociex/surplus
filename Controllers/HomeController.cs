@@ -24,11 +24,6 @@ namespace surplus.Controllers
         }
 
 
-        public IActionResult Material()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();

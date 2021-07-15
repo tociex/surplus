@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using tipe.Models;
 using uom.Models;
 using subtipe.Models;
+using material.Models;
+using materialsurplus.Models;
 namespace surplus.Models{
     public class SurplusContext:DbContext
     {
@@ -15,7 +17,16 @@ namespace surplus.Models{
 
          public DbSet<Subtipe> mastersubtipe{get; set;}
 
+
+         public DbSet<Material> mastermaterial{get; set;}
+
+
+         public DbSet<Materialsurplus> materialsurplus{get; set;}
+
+
+        
         
     }
+    
 
 }

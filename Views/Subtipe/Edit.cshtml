@@ -13,7 +13,9 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Id_tipe" class="control-label"></label>
-                <input asp-for="Id_tipe" class="form-control" />
+                 <select asp-for="Id_tipe"
+                asp-items="@( new SelectList(ViewBag.Departments,"Id","Nama_tipe"))" 
+                class="form-control"></select>
                 <span asp-validation-for="Id_tipe" class="text-danger"></span>
             </div>
             <div class="form-group">

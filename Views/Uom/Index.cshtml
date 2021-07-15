@@ -2,7 +2,7 @@
 @model IEnumerable<uom.Models.Uom>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Master Uom";
 }
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,6 +13,8 @@
     <h3>Master UOM</h3>
 
     <a asp-action="Create" class="btn btn-success"style="color:white"><i class="glyphicon glyphicon-plus"></i> Add UOM</a>
+    <a asp-action="Index" class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i> Reload</a>
+  
     <br/>
     <br/>
     <div class="row">

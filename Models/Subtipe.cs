@@ -8,4 +8,7 @@ namespace subtipe.Models
       public string Sub_tipe{ get; set;}
   }
 
+
+
+
 }

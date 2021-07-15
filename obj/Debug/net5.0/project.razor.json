@@ -15619,8 +15619,23 @@
   "RootNamespace": "surplus",
   "Documents": [
     {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Materialsurplus/Create.cshtml",
+      "TargetPath": "Views\\Materialsurplus\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Materialsurplus/Index.cshtml",
+      "TargetPath": "Views\\Materialsurplus\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/tociex/dotnet/surplus/Views/Home/Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Material/Delete.cshtml",
+      "TargetPath": "Views\\Material\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15659,13 +15674,33 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Material/Details.cshtml",
+      "TargetPath": "Views\\Material\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Materialsurplus/Edit.cshtml",
+      "TargetPath": "Views\\Materialsurplus\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/tociex/dotnet/surplus/Views/Subtipe/Create.cshtml",
       "TargetPath": "Views\\Subtipe\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Material/Create.cshtml",
+      "TargetPath": "Views\\Material\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/tociex/dotnet/surplus/Views/Tipe/Create.cshtml",
       "TargetPath": "Views\\Tipe\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Material/Edit.cshtml",
+      "TargetPath": "Views\\Material\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15694,6 +15729,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Materialsurplus/Details.cshtml",
+      "TargetPath": "Views\\Materialsurplus\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/tociex/dotnet/surplus/Views/Tipe/Details.cshtml",
       "TargetPath": "Views\\Tipe\\Details.cshtml",
       "FileKind": "mvc"
@@ -15716,6 +15756,16 @@
     {
       "FilePath": "/home/tociex/dotnet/surplus/Views/Tipe/Edit.cshtml",
       "TargetPath": "Views\\Tipe\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Materialsurplus/Delete.cshtml",
+      "TargetPath": "Views\\Materialsurplus\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Material/Index.cshtml",
+      "TargetPath": "Views\\Material\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
