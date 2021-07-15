@@ -1,0 +1,155 @@
+@model materialsurplus.Models.Materialsurplus
+
+@{
+    ViewData["Title"] = "Details";
+}
+<script type="text/javascript" src="~/css/jquery.min.js"></script>
+<script type="text/javascript" src="~/css/qrcode.js"></script>
+
+<div>
+    <h4>Material Surplus</h4>
+    <hr />
+    <dl class="row">
+        <div class="col-md-12">
+             <div class="col-md-6">
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Tgl_input)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Tgl_input)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Source_material)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Source_material)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Material_no)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Material_no)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Old_material)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Old_material)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Short_desc)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Short_desc)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Qty)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Qty)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Nilai)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Nilai)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Uom)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Uom)
+                    </dd>
+            </div>
+            <div class="col-md-6">
+                    
+                    
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Posisi)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Posisi)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Luas)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Luas)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Sloc)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Sloc)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.Sbin)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.Sbin)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.File_foto)
+                    </dt>
+                    <dd class = "col-sm-6">
+                        @Html.DisplayFor(model => model.File_foto)
+                    </dd>
+                    <dt class = "col-sm-6">
+                        @Html.DisplayNameFor(model => model.File_foto)
+                    </dt>
+                    <dd class = "col-sm-6">
+                       QrCode
+                    </dd>
+                     <dd class = "col-sm-6">
+                        <input id="text" type="text" value="@Model.Material_no" style="width:80%; display:none" />
+                         <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+
+                    </dd>
+
+            </div>
+
+        </div>
+    </dl>
+</div>
+<div>
+     <hr />
+   
+    <a asp-action="Index" class="btn btn-danger" >Back </a>
+</div>
+
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 100,
+	height : 100
+});
+
+function makeCode () {		
+	var elText = document.getElementById("text");
+	
+	if (!elText.value) {
+		alert("Input a text");
+		elText.focus();
+		return;
+	}
+	
+	qrcode.makeCode(elText.value);
+}
+
+makeCode();
+
+$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+</script>
