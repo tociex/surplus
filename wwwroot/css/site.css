@@ -1,5 +1,33 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+@media screen and (min-width: 800px) {
+  .kanan {
+      margin-left:35%;
+  }
+  .onlyPrint {
+    display: none;
+   }
+}
+
+@media print {
+  .noPrint{
+    display:none;
+  }
+
+  @page { size: 2.5in 5.5in;  margin: 0; }
+  body { 
+    width: 400px; 
+    height: auto;
+    margin: 1.6cm; }
+
+ 
+}
+
+@media screen {
+  .onlyPrint {
+      display: none;
+  }
+}
 
 a.navbar-brand {
   white-space: normal;

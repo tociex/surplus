@@ -3,12 +3,17 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<style>
+#hidden_div {
+    display: none;
+}
+</style>
 
 <h4>Material Surplus</h4>
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Edit">
+        <form  enctype="multipart/form-data" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="col-md-6">
@@ -81,14 +86,19 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Posisi" class="control-label"></label>
-                         <select asp-for="Posisi" class="form-control">
+                         <select asp-for="Posisi" class="form-control" onchange="showDiv(this)">
                             <option value="Lantai">Lantai</option>
                             <option value="Rak">Rak</option>
                         </select>
                         <span asp-validation-for="Posisi" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Luas" class="control-label"></label>
+                     <div class="form-group" id="show_div">
+                        <label asp-for="Luas" class="control-label">  Luas (M2)</label>
+                        <input asp-for="Luas" class="form-control" type="number"/>
+                        <span asp-validation-for="Luas" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="hidden_div">
+                        <label asp-for="Luas" class="control-label">  Kolom</label>
                         <input asp-for="Luas" class="form-control" type="number"/>
                         <span asp-validation-for="Luas" class="text-danger"></span>
                     </div>
@@ -105,7 +115,7 @@
                     <div class="form-group">
                        <label asp-for="File_foto" class="control-label"></label>
                         <div class="custom-file">
-                            <input asp-for="File_foto" class="custom-file-input" id="customFile">
+                            <input asp-for="File_foto" class="custom-file-input" id="customFile" type="file">
                             <label class="custom-file-label" for="File_foto">Choose file</label>
                         </div>
                         <span asp-validation-for="File_foto" class="text-danger"></span>
@@ -119,8 +129,24 @@
     </div>
 </div>
 
-
-
+<script type="text/javascript">  
+    // Add the following code if you want the name of the file appear on select  
+    $(".custom-file-input").on("change", function () {  
+        var fileName = $(this).val().split("\\").pop();  
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);  
+    });  
+</script>
+<script type="text/javascript">
+function showDiv(select){
+   if(select.value=='Rak'){
+    document.getElementById('hidden_div').style.display = "block";
+    document.getElementById('show_div').style.display = "none";
+   } else{
+    document.getElementById('hidden_div').style.display = "none";
+    document.getElementById('show_div').style.display = "block";
+   }
+} 
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

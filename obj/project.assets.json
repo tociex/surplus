@@ -7112,7 +7112,7 @@
     ]
   },
   "packageFolders": {
-    "/home/tociex/.nuget/packages/": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7120,11 +7120,11 @@
       "projectUniqueName": "/home/tociex/dotnet/surplus/surplus.csproj",
       "projectName": "surplus",
       "projectPath": "/home/tociex/dotnet/surplus/surplus.csproj",
-      "packagesPath": "/home/tociex/.nuget/packages/",
+      "packagesPath": "/root/.nuget/packages/",
       "outputPath": "/home/tociex/dotnet/surplus/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/tociex/.nuget/NuGet/NuGet.Config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7181,7 +7181,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.301/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }

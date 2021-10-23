@@ -7,23 +7,70 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using materialsurplus.Models;
 using surplus.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO; 
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;  
+
 
 namespace surplus.Controllers
 {
     public class MaterialsurplusController : Controller
     {
         private readonly SurplusContext _context;
-
-        public MaterialsurplusController(SurplusContext context)
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public MaterialsurplusController(SurplusContext context , IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            webHostEnvironment = hostEnvironment;
         }
 
-        // GET: Materialsurplus
+        // GET: Materialsurpluss
         public async Task<IActionResult> Index()
         {
-            return View(await _context.materialsurplus.ToListAsync());
-        }
+        return View(await _context.materialsurplus.Select(a => new {a.Id, a.Material_no, a.Qty, Qty = a.pengambilan.Sum() }).OrderByDescending(materialsurplus => materialsurplus.Id).ToListAsync());
+
+        
+
+        // var totalPostTask = _context.materialpengambilan.SumAsync(c => c.Qty);
+        // ?return View(await _context.materialsurplus.OrderByDescending(materialsurplus => materialsurplus.Id).ToListAsync());
+       
+        //  return View(await _context.materialsurplus.OrderByDescending(materialsurplus => materialsurplus.Id).Select(x => new _context.materialpengambilan { 
+        //                      Prod = x, 
+        //                      Count = _context.materialpengambilan
+        //                                .Where(z => z.Material_no == x.Material_no)
+        //                                .Sum(z => z.Qty) }).ToString().ToListAsync());
+       
+        // return View( await  _context.materialsurplus.(
+        //      join pengambilan e on materialsurplus.material_no equals e.material_no
+        //      select e => new PriceSum {
+        //      {  
+        //          PriceSum = e.qty.Sum()
+        //      }).ToListAsync());
+        //
+                // var ap = await (from p in _context.materialsurplus
+                //       join e in _context.materialpengambilan on p.Material_no equals e.Material_no
+                //       select new Materialsurplus
+                //                 {  
+                //                     Id = p.Id,
+                //                     Tgl_input = p.Tgl_input,
+                //                     Source_material = p.Source_material,
+                //                     Material_no = p.Material_no,
+                //                     Old_material = p.Old_material,
+                //                     Short_desc = p.Short_desc,
+                //                     Description = p.Description,
+                //                     Qty = p.Qty,
+                //                     Nilai= p.Nilai,
+                //                     Uom=p.Uom,
+                //                     Posisi=p.Posisi,
+                //                     Luas=p.Luas,
+                //                     Sloc=p.Sloc,
+                //                     Sbin=p.Sbin,
+                //                     File_foto=p.File_foto
+                //                     // Qty= e.Sum(e => e.Qty)
+                //                 }).ToListAsync();
+                //  return View(ap);
+         }
 
         // GET: Materialsurplus/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -58,10 +105,27 @@ namespace surplus.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tgl_input,Source_material,Material_no,Old_material,Short_desc,Description,Qty,Nilai,Uom,Posisi,Luas,Sloc,Sbin,File_foto")] Materialsurplus materialsurplus)
+        public async Task<IActionResult> Create([Bind("Id,Tgl_input,Source_material,Material_no,Old_material,Short_desc,Description,Qty,Nilai,Uom,Posisi,Luas,Sloc,Sbin,File_foto")] Materialsurplus materialsurplus,IFormFile File_foto)
         {
+
+         
             if (ModelState.IsValid)
             {
+
+            string uniqueFileName = null;  //to contain the filename
+            if (File_foto!= null)  //handle iformfile
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                uniqueFileName =File_foto.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    File_foto.CopyTo(fileStream);
+                }
+            }
+                materialsurplus.File_foto = uniqueFileName;
+
+
                 _context.Add(materialsurplus);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -95,17 +159,30 @@ namespace surplus.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Tgl_input,Source_material,Material_no,Old_material,Short_desc,Description,Qty,Nilai,Uom,Posisi,Luas,Sloc,Sbin,File_foto")] Materialsurplus materialsurplus)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Tgl_input,Source_material,Material_no,Old_material,Short_desc,Description,Qty,Nilai,Uom,Posisi,Luas,Sloc,Sbin,File_foto")] Materialsurplus materialsurplus,IFormFile File_foto)
         {
             if (id != materialsurplus.Id)
             {
                 return NotFound();
             }
 
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    string uniqueFileName = null;  //to contain the filename
+                        if (File_foto!= null)  //handle iformfile
+                        {
+                            string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                            uniqueFileName =File_foto.FileName;
+                            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                File_foto.CopyTo(fileStream);
+                            }
+                        }
+                     materialsurplus.File_foto = uniqueFileName;
                     _context.Update(materialsurplus);
                     await _context.SaveChangesAsync();
                 }
@@ -122,6 +199,7 @@ namespace surplus.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(materialsurplus);
         }
 

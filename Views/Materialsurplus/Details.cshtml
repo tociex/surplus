@@ -7,11 +7,11 @@
 <script type="text/javascript" src="~/css/qrcode.js"></script>
 
 <div>
-    <h4>Material Surplus</h4>
+    <h4 class="noPrint">Material Surplus</h4>
     <hr />
     <dl class="row">
         <div class="col-md-12">
-             <div class="col-md-6">
+             <div class="col-md-6 noPrint">
                     <dt class = "col-sm-6">
                         @Html.DisplayNameFor(model => model.Tgl_input)
                     </dt>
@@ -70,46 +70,58 @@
             <div class="col-md-6">
                     
                     
-                    <dt class = "col-sm-6">
+                    <dt class = "col-sm-6 noPrint">
                         @Html.DisplayNameFor(model => model.Posisi)
                     </dt>
-                    <dd class = "col-sm-6">
+                    <dd class = "col-sm-6 noPrint">
                         @Html.DisplayFor(model => model.Posisi)
                     </dd>
-                    <dt class = "col-sm-6">
+                    <dt class = "col-sm-6 noPrint">
                         @Html.DisplayNameFor(model => model.Luas)
                     </dt>
-                    <dd class = "col-sm-6">
+                    <dd class = "col-sm-6 noPrint">
                         @Html.DisplayFor(model => model.Luas)
                     </dd>
-                    <dt class = "col-sm-6">
+                    <dt class = "col-sm-6 noPrint">
                         @Html.DisplayNameFor(model => model.Sloc)
                     </dt>
-                    <dd class = "col-sm-6">
-                        @Html.DisplayFor(model => model.Sloc)
+                    <dd class = "col-sm-6 noPrint">
+                         @Html.DisplayFor(model => model.Sloc)
                     </dd>
-                    <dt class = "col-sm-6">
-                        @Html.DisplayNameFor(model => model.Sbin)
+                    <dt class = "col-sm-6 noPrint">
+                        @Html.DisplayFor(model => model.Sloc)
                     </dt>
-                    <dd class = "col-sm-6">
+                    <dd class = "col-sm-6 noPrint">
                         @Html.DisplayFor(model => model.Sbin)
                     </dd>
-                    <dt class = "col-sm-6">
-                        @Html.DisplayNameFor(model => model.File_foto)
+                    <dt class = "col-sm-6 noPrint">
+                        @Html.DisplayNameFor(model => model.Sbin)
                     </dt>
-                    <dd class = "col-sm-6">
-                        @Html.DisplayFor(model => model.File_foto)
+                    <dd class = "col-sm-6 noPrint">
+                        <b>Foto</b>
                     </dd>
-                    <dt class = "col-sm-6">
-                        @Html.DisplayNameFor(model => model.File_foto)
+                    <dt class = "col-sm-6 noPrint">
+                        <a href="~/images/@Model.File_foto" target="_blank"><img src="~/images/@Model.File_foto"   
+                                        class="rounded-circle"   
+                                        height="40" width="40"   
+                                        asp-append-version="true" /> </a>
+                   
                     </dt>
+                   
                     <dd class = "col-sm-6">
-                       QrCode
+                       <b>QrCode</b>
                     </dd>
+                  
                      <dd class = "col-sm-6">
                         <input id="text" type="text" value="@Model.Material_no" style="width:80%; display:none" />
-                         <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
-
+                         <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div> <br/>
+                         <button onclick="window.print();" class="noPrint btn btn-success"><i class="glyphicon glyphicon-print"></i> Print </button>
+                    </dd>
+                      <dd class = "col-sm-6 onlyPrint">
+                        @Html.DisplayFor(model => model.Material_no)
+                    </dd>
+                    <dd class = "col-sm-6 onlyPrint" >
+                        @Html.DisplayFor(model => model.Short_desc)
                     </dd>
 
             </div>
@@ -118,9 +130,12 @@
     </dl>
 </div>
 <div>
+
+
+
      <hr />
    
-    <a asp-action="Index" class="btn btn-danger" >Back </a>
+    <a asp-action="Index" class="btn btn-danger noPrint" >Back </a>
 </div>
 
 <script type="text/javascript">

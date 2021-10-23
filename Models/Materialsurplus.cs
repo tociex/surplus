@@ -16,6 +16,8 @@ namespace materialsurplus.Models
         public string Sloc{ get; set;}
         public string Sbin{ get; set;}
         public string File_foto{ get; set;}
+
+        
   }
 
 }

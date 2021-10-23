@@ -15,15 +15,16 @@
       .dataTables_length{ margin-left: -16em }
       div.dataTables_paginate { margin-right: -67em; }
       .modal {
-  text-align: center;
-}
+            text-align: center;
+            }
 
 
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
+            .modal-dialog {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+            }
+       
     </style>
 </head>
 <body>
@@ -35,25 +36,30 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between kanan">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> <i class="glyphicon glyphicon-home"></i> Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Materialsurplus" asp-action="">Material Surplus</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Materialsurplus" asp-action=""> <i class="glyphicon glyphicon-th-list"></i> Material Surplus</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Material" asp-action="">Source Material</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pengambilan" asp-action=""> <i class="glyphicon glyphicon-th-list"></i> Pengambilan Material</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tipe" asp-action="">Master Tipe</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Subtipe" asp-action="">Master Subtipe</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Uom" asp-action="">Master Uom</a>
+                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i class="glyphicon glyphicon-folder-open"></i>  Master Data
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-area="" asp-controller="Material" asp-action="">Master Source Material</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Tipe" asp-action="">Master Tipe</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Subtipe" asp-action="">Master Subtipe</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Uom" asp-action="">Master Uom</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Luasan" asp-action="">Master Luasan</a>
+                                                                
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -66,7 +72,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted noPrint">
         <div class="container">
             &copy; 2021 - surplus - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

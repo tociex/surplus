@@ -170,3 +170,15 @@
 /home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Materialsurplus/Details.cshtml.g.cs
 /home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Materialsurplus/Edit.cshtml.g.cs
 /home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Materialsurplus/Index.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Home/Scan.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Luasan/Create.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Luasan/Delete.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Luasan/Details.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Luasan/Edit.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Luasan/Index.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Pengambilan/Create.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Pengambilan/Delete.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Pengambilan/Details.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Pengambilan/Edit.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Pengambilan/Index.cshtml.g.cs
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Home/Resize.cshtml.g.cs

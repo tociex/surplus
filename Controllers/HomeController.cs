@@ -23,6 +23,16 @@ namespace surplus.Controllers
             return View();
         }
 
+        public IActionResult Scan()
+        {
+            return View();
+        }
+
+         public IActionResult Resize()
+        {
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {

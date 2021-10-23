@@ -4,11 +4,17 @@
     ViewData["Title"] = "Create";
 }
 
+<style>
+#hidden_div {
+    display: none;
+}
+</style>
+
 <h4>Material Surplus</h4>
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Create">
+        <form enctype="multipart/form-data" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="col-md-6">
@@ -19,19 +25,32 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Tipe </label>
-                         <select 
+                        <select 
                             asp-items="@( new SelectList(ViewBag.Tipes,"Kode_tipe","Nama_tipe"))" 
-                            class="form-control"></select>
+                            class="form-control" id="kabelart" oncha nge="update();" required>
+                            <option value="" selected> Pilih </option>
+                        </select>
                         <span asp-validation-for="Source_material" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Sub Tipe </label>
                          <select 
                             asp-items="@( new SelectList(ViewBag.Subtipes,"Kode_subtipe","Sub_tipe"))" 
-                            class="form-control"></select>
+                            class="form-control" id="steckertyp1" onchange="update();" required>
+                            <option value="" selected> Pilih </option>
+                        </select>
                         <span asp-validation-for="Source_material" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+
+                    <select name="verwendung" id="verwendung" onchange="update();" style="display:none">
+                        
+                        </select>
+
+                        <select name="anschlusstyp1" id="anschlusstyp1" onchange="update();" style="display:none">
+                        
+                        </select>
+                        <input  style="display: none;" class="form-control" name="tgl" id="tgl" value="@DateTime.Today.ToString("MMyy")" />
+                    <div class="form-group" style="display: none;">
                         <label asp-for="Source_material" class="control-label"></label>
                        
                          <select asp-for="Source_material"
@@ -41,7 +60,7 @@
                     </div>
                     <div class="form-group" style="display: none;">
                         <label asp-for="Material_no" class="control-label"></label>
-                        <input asp-for="Material_no" class="form-control" value="A0106210001"/>
+                        <input asp-for="Material_no" class="form-control" value="" id="kabelname"/>
                         <span asp-validation-for="Material_no" class="text-danger"></span>
                     </div>
                     <div class="form-group" style="display: none;">
@@ -83,14 +102,19 @@
                 <div class="form-group">
                     <label asp-for="Posisi" class="control-label"></label>
                     
-                    <select asp-for="Posisi" class="form-control">
+                    <select asp-for="Posisi" class="form-control" onchange="showDiv(this)">
                         <option value="Lantai">Lantai</option>
                         <option value="Rak">Rak</option>
                     </select>
                     <span asp-validation-for="Posisi" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Luas" class="control-label"></label>
+                <div class="form-group" id="show_div">
+                    <label asp-for="Luas" class="control-label">  Luas (M2)</label>
+                    <input asp-for="Luas" class="form-control" type="number"/>
+                    <span asp-validation-for="Luas" class="text-danger"></span>
+                </div>
+                <div class="form-group" id="hidden_div">
+                    <label asp-for="Luas" class="control-label">  Kolom</label>
                     <input asp-for="Luas" class="form-control" type="number"/>
                     <span asp-validation-for="Luas" class="text-danger"></span>
                 </div>
@@ -107,7 +131,9 @@
                 <div class="form-group">
                     <label asp-for="File_foto" class="control-label"></label>
                     <div class="custom-file">
-                        <input asp-for="File_foto" class="custom-file-input" id="customFile">
+                        <input asp-for="File_foto" class="custom-file-input" id="customFile" type="file">
+
+                         @* <input asp-for="File_foto" class="custom-file-input" id="customFile">   *@
                         <label class="custom-file-label" for="File_foto">Choose file</label>
                     </div>
                     <span asp-validation-for="File_foto" class="text-danger"></span>
@@ -120,8 +146,44 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">  
+    // Add the following code if you want the name of the file appear on select  
+    $(".custom-file-input").on("change", function () {  
+        var fileName = $(this).val().split("\\").pop();  
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);  
+    });  
+</script>  
+<script type="text/javascript">
+function showDiv(select){
+   if(select.value=='Rak'){
+    document.getElementById('hidden_div').style.display = "block";
+    document.getElementById('show_div').style.display = "none";
+   } else{
+    document.getElementById('hidden_div').style.display = "none";
+    document.getElementById('show_div').style.display = "block";
+   }
+} 
 
+function update() {
+    var kabelname ;
+    if(document.getElementById("kabelart").value === "") {  
+        kabelname = "";
+    }
+    else {
+        kabelname = document.getElementById("kabelart").value;
 
+        if(document.getElementById("steckertyp1").value!== ""){
+            kabelname += "" + document.getElementById("steckertyp1").value + document.getElementById("tgl").value + Math.floor(Math.random() * 999);
+            
+        }
+        else {
+                kabelname += "" + document.getElementById("verwendung").value + document.getElementById("tgl").value + Math.floor(Math.random() * 999);
+        }
+
+    }                
+    document.getElementById("kabelname").value = kabelname;                
+}
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

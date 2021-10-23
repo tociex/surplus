@@ -6,84 +6,170 @@
 <div class="container">
       <h5>REKAPITULASI HARIAN GUDANG SURPLUS</h5>
 <div class="row col-md-12">
+<div class="box box-info col-md-12" style="margin-bottom:1em">
+
+  <div class="box-body">
+  <form asp-action="">
+    <div class="row">
+      <div class="col-xs-7">
+        <div class="input-group input-daterange">
+          <input type="date" class="form-control"  value="@DateTime.Today.ToString("dd/mm/yyyy")">
+          <div class="input-group-addon">to</div>
+          <input type="date" class="form-control"  value="@DateTime.Today.ToString("dd/mm/yyyy")">
+         </div>
+      </div>
+      
+      <div class="col-xs-5">
+        <button type="submit" class="btn btn-large btn-primary"><i class="glyphicon glyphicon-search"></i> Filter</button>
+         <a asp-action="scan"  class="btn btn-large btn-success"><i class="glyphicon glyphicon-barcode"></i> Scan</a>
+      </div>
+    </div>
+  </form>
+  </div>
+  <!-- /.box-body -->
+</div>
+
+
+   <div class="col-md-12 bg-white border rounded p-2 mb-4">
+
+   
+          <script src="https://code.highcharts.com/highcharts.js"></script>
+          <script src="https://code.highcharts.com/modules/data.js"></script>
+          <script src="https://code.highcharts.com/modules/exporting.js"></script>
+          <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+          <figure class="highcharts-figure">
+            <div id="container"></div>
+
+            <table id="datatable" style="display:none">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>NILAI PEMANFAATAN</th>
+                  <th>NILAI STOCK</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Januari</th>
+                  <td>3</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <th>Februari</th>
+                  <td>2</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th>Maret</th>
+                  <td>5</td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <th>April</th>
+                  <td>1</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th>Mei</th>
+                  <td>2</td>
+                  <td>4</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <script>
+              
+              Highcharts.chart('container', {
+            data: {
+              table: 'datatable'
+            },
+            chart: {
+              type: 'column'
+            },
+            title: {
+              text: 'NILAI STOCK DAN PEMANFAATAN'
+            },
+            yAxis: {
+              allowDecimals: false,
+              title: {
+                text: 'Units'
+              }
+            },
+            credits: {
+              enabled: false
+            },
+            tooltip: {
+              formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                  this.point.y + ' ' + this.point.name.toLowerCase();
+              }
+            }
+          });
+          </script>
+    </div>
+
+
+    <div class="col-md-12 bg-white border rounded p-2 mb-4">
+         <h6><center>NILAI PEMANFAATAN OLEH USER</center></h6>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered dataTable ">
+            <caption>List of users</caption>
+            <thead>
+              <tr>
+                <th scope="col" rowspan = "2">Area</th>
+                <th scope="col" colspan = "2" >Bulan Ini</th>
+                <th scope="col" colspan = "2">Total</th>
+
+              </tr>
+              <tr>
+                <th scope="col">Nilai</th>
+                <th scope="col" >Jml Item</th>
+                <th scope="col">Nilai</th>
+                <th scope="col" >Jml Item</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>MA 1</th>
+                <td>Rp. 2.000.000</td>
+                <td>15</td>
+                <td>Rp. 52.000.000</td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <th>MA 2</th>
+                <td>Rp. 2.000.000</td>
+                <td>15</td>
+                <td>Rp. 52.000.000</td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <th>MA 1</th>
+                <td>Rp. 2.000.000</td>
+                <td>15</td>
+                <td>Rp. 52.000.000</td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <th>MA 1</th>
+                <td>Rp. 2.000.000</td>
+                <td>15</td>
+                <td>Rp. 52.000.000</td>
+                <td>18</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>  
+    </div>
+
+
     
     <div class="col-md-8 bg-white border rounded p-2 mb-4">
      
-      <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-<figure class="highcharts-figure">
-  <div id="container"></div>
-
-  <table id="datatable" style="display:none">
-    <thead>
-      <tr>
-        <th></th>
-        <th>NILAI PEMANFAATAN</th>
-        <th>NILAI STOCK</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>Januari</th>
-        <td>3</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <th>Februari</th>
-        <td>2</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <th>Maret</th>
-        <td>5</td>
-        <td>11</td>
-      </tr>
-      <tr>
-        <th>April</th>
-        <td>1</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <th>Mei</th>
-        <td>2</td>
-        <td>4</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-
-<script>
-    
-    Highcharts.chart('container', {
-  data: {
-    table: 'datatable'
-  },
-  chart: {
-    type: 'column'
-  },
-  title: {
-    text: 'NILAI STOCK DAN PEMANFAATAN'
-  },
-  yAxis: {
-    allowDecimals: false,
-    title: {
-      text: 'Units'
-    }
-  },
-  credits: {
-    enabled: false
-  },
-  tooltip: {
-    formatter: function () {
-      return '<b>' + this.series.name + '</b><br/>' +
-        this.point.y + ' ' + this.point.name.toLowerCase();
-    }
-  }
-});
-</script>
+          
         
         <div class="row">
             <div class="col-md-6 bg-white"> 
@@ -327,57 +413,7 @@ Highcharts.chart('container_donut', {
         </div>
     </div>
     <div class="col-md-4 bg-white border rounded p-2 mb-4">
-      <h6><center>NILAI PEMANFAATAN OLEH USER</center></h6>
-      <div class="table-responsive">
-<table class="table table-striped table-bordered dataTable ">
-  <caption>List of users</caption>
-  <thead>
-    <tr>
-      <th scope="col" rowspan = "2">Area</th>
-      <th scope="col" colspan = "2" >Bulan Ini</th>
-      <th scope="col" colspan = "2">Total</th>
-
-    </tr>
-     <tr>
-      <th scope="col">Nilai</th>
-      <th scope="col" >Jml Item</th>
-      <th scope="col">Nilai</th>
-      <th scope="col" >Jml Item</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>MA 1</th>
-      <td>Rp. Rp2.000.000</td>
-      <td>15</td>
-      <td>Rp. Rp52.000.000</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>MA 2</th>
-      <td>Rp. Rp2.000.000</td>
-      <td>15</td>
-      <td>Rp. Rp52.000.000</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>MA 1</th>
-      <td>Rp. Rp2.000.000</td>
-      <td>15</td>
-      <td>Rp. Rp52.000.000</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>MA 1</th>
-      <td>Rp. Rp2.000.000</td>
-      <td>15</td>
-      <td>Rp. Rp52.000.000</td>
-      <td>18</td>
-    </tr>
-  </tbody>
-</table>
-</div>  
+      
      <div class="col-md-12"><br>
          <h6><center>Utilitas Gudang Surplus</center></h6>
          <div id="container_rank"></div>
