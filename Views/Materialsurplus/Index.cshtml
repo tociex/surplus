@@ -90,6 +90,7 @@
                     </thead>
                     <tbody>
                         @foreach (var item in Model) {
+                            var result = (int.Parse(item.Nilai) * int.Parse(item.Qty) );
                                 <tr>
                                   
                                     <td>
@@ -113,17 +114,17 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Qty)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Qty)
-                                    </td>
-                                    <td> 0
+                                    <td>0
                                         @* @Html.DisplayFor(modelItem => item.Qty) *@
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Qty) 
                                     </td>
                                     <td> <span class='format'> @Html.DisplayFor(modelItem => item.Nilai)</span>
   
                                     </td>
 
-                                     <td> <span class='format'> @Html.DisplayFor(modelItem => item.Nilai)</span>
+                                     <td> <span class='format'> @result</span>
   
                                     </td>
                                     <td>
@@ -153,7 +154,10 @@
                                         <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                                     </td>
                                  
-                                    
+                                     foreach (var pengambilan in Model.Where(s => s.Material_no == item.Material_no).ToList())
+                                        {                
+                                            <div>@pengambilan.Model.Qty</div>
+                                        }
                                 </tr>
                         }
                        
