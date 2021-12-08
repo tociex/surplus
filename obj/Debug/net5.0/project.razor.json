@@ -15839,6 +15839,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/tociex/dotnet/surplus/Views/Pengambilan/Surplus.cshtml",
+      "TargetPath": "Views\\Pengambilan\\Surplus.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/tociex/dotnet/surplus/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

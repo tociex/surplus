@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using pengambilan.Models;
 using surplus.Models;
+using materialsurplus.Models;
 
 namespace surplus.Controllers
 {
@@ -22,6 +23,14 @@ namespace surplus.Controllers
         // GET: Pengambilan
         public async Task<IActionResult> Index()
         {
+            return View(await _context.materialpengambilan.ToListAsync());
+        }
+        
+        // material surplus
+        public async Task<IActionResult> Surplus()
+        {    
+
+            ViewBag.Materialssurplus = _context.materialsurplus.ToList();
             return View(await _context.materialpengambilan.ToListAsync());
         }
 

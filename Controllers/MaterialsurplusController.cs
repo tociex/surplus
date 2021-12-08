@@ -32,19 +32,25 @@ namespace surplus.Controllers
         public async Task<IActionResult> Index()
         {
 
-      
-        // return View(await _context.materialsurplus.Select(a => new {a.Id, a.Material_no, a.Qty, Qty = a.pengambilan.Sum() }).OrderByDescending(materialsurplus => materialsurplus.Id).ToListAsync());
+        //ViewBag.Materials = _context.materialpengambilan.ToList();
+        // return View(await _context.materialsurplus.Select(a => new {a.Id, a.Material_no, a.Qty, Qty = a.ViewBag.Materials.Sum() }).OrderByDescending(materialsurplus => materialsurplus.Id).ToListAsync());
 
           
+            ViewBag.Materialssurplus = _context.materialsurplus.ToList();
+            return View(await _context.materialpengambilan.ToListAsync());
+        //ViewBag.Materials = _context.materialpengambilan.ToList();
+        //ViewBag.Materialssurplus = _context.materialsurplus.ToList();
+
+
 
         // var totalPostTask = _context.materialpengambilan.SumAsync(c => c.Qty);
-        return View(await _context.materialsurplus.OrderByDescending(materialsurplus => materialsurplus.Id).ToListAsync());
+    //    return View(await _context.materialsurplus.OrderByDescending(materialsurplus => materialsurplus.Id).ToListAsync());
        
         //  return View(await _context.materialsurplus.OrderByDescending(materialsurplus => materialsurplus.Id).Select(x => new _context.materialpengambilan { 
-                            //  Prod = x, 
-                            //  Count = _context.materialpengambilan
-                            //            .Where(z => z.Material_no == x.Material_no)
-                            //            .Sum(z => z.Qty) }).ToString().ToListAsync());
+        //                      Prod = x, 
+        //                      Count = _context.materialpengambilan
+        //                                .Where(z => z.Material_no == x.Material_no)
+        //                                .Sum(z => z.Qty) }).ToString().ToListAsync());
        
         // return View( await  _context.materialsurplus.(
         //      join pengambilan e on materialsurplus.material_no equals e.material_no

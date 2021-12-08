@@ -1,5 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<materialsurplus.Models.Materialsurplus>
+@using System.Globalization
+@using System.Text.RegularExpressions
+@{
+    ViewData["Title"] = "Dashboard";
 }
 
 
@@ -124,42 +127,36 @@
 
               </tr>
               <tr>
-                <th scope="col">Nilai</th>
+                <th scope="col">Price</th>
                 <th scope="col" >Jml Item</th>
                 <th scope="col">Nilai</th>
-                <th scope="col" >Jml Item</th>
+               
 
               </tr>
             </thead>
             <tbody>
+              @foreach (var item in  ViewBag.Materials) {
+                 var price = 0;
+        
+                foreach (var item2 in Model.Where(s => s.Material_no == item.Material_no).ToList())
+                {                
+                        
+                        price = int.Parse(item2.Nilai);
+                        
+                }   
+
+                var result = (int.Parse(item.Qty) * price);
+
               <tr>
-                <th>MA 1</th>
-                <td>Rp. 2.000.000</td>
-                <td>15</td>
-                <td>Rp. 52.000.000</td>
-                <td>18</td>
+                <th>@item.Area</th>
+                <td>@String.Format(CultureInfo.CreateSpecificCulture("id-ID"), " {0:C}\n", price)</td>
+                <td>@item.Qty</td>
+                <td>@String.Format(CultureInfo.CreateSpecificCulture("id-ID"), " {0:C}\n", result)</td>
+                
               </tr>
-              <tr>
-                <th>MA 2</th>
-                <td>Rp. 2.000.000</td>
-                <td>15</td>
-                <td>Rp. 52.000.000</td>
-                <td>18</td>
-              </tr>
-              <tr>
-                <th>MA 1</th>
-                <td>Rp. 2.000.000</td>
-                <td>15</td>
-                <td>Rp. 52.000.000</td>
-                <td>18</td>
-              </tr>
-              <tr>
-                <th>MA 1</th>
-                <td>Rp. 2.000.000</td>
-                <td>15</td>
-                <td>Rp. 52.000.000</td>
-                <td>18</td>
-              </tr>
+
+               }
+              
             </tbody>
           </table>
         </div>  
@@ -544,4 +541,3 @@ Highcharts.chart('container_donut', {
     </div>
    
   </div>
-   

@@ -188,3 +188,4 @@
 /home/tociex/dotnet/surplus/bin/Debug/net5.0/runtimes/win-x86/native/sni.dll
 /home/tociex/dotnet/surplus/bin/Debug/net5.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /home/tociex/dotnet/surplus/bin/Debug/net5.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/tociex/dotnet/surplus/obj/Debug/net5.0/Razor/Views/Pengambilan/Surplus.cshtml.g.cs

@@ -66,6 +66,20 @@
                     <dd class = "col-sm-6">
                         @Html.DisplayFor(model => model.Uom)
                     </dd>
+
+                    <dt class = "col-sm-12 noPrint"> <b>Foto</b> <br/>
+                        <!--a href="~/images/@Model.File_foto" target="_blank"><img src="~/images/@Model.File_foto"   
+                                        class="rounded-circle"   
+                                        height="40" width="40"   
+                                        asp-append-version="true" /> </a-->
+                        
+                        <a onclick="download_image()" href="#" ><canvas id="canvas"   height="600" width="600"  crossorigin="anonymous"></canvas></a>
+
+                   
+                    </dt>
+
+
+                    
             </div>
             <div class="col-md-6">
                     
@@ -88,27 +102,13 @@
                     <dd class = "col-sm-6 noPrint">
                          @Html.DisplayFor(model => model.Sloc)
                     </dd>
-                    <dt class = "col-sm-6 noPrint">
-                        @Html.DisplayFor(model => model.Sloc)
+                     <dt class = "col-sm-6 noPrint">
+                        @Html.DisplayNameFor(model => model.Sbin)
                     </dt>
                     <dd class = "col-sm-6 noPrint">
                         @Html.DisplayFor(model => model.Sbin)
                     </dd>
-                    <dt class = "col-sm-6 noPrint">
-                        @Html.DisplayNameFor(model => model.Sbin)
-                    </dt>
-                    <dd class = "col-sm-6 noPrint">
-                        <b>Foto</b>
-                    </dd>
-                    <dt class = "col-sm-6 noPrint">
-                        <a href="~/images/@Model.File_foto" target="_blank"><img src="~/images/@Model.File_foto"   
-                                        class="rounded-circle"   
-                                        height="40" width="40"   
-                                        asp-append-version="true" /> </a>
-                   
-                    </dt>
-                   
-                    <dd class = "col-sm-6">
+                   <dd class = "col-sm-6">
                        <b>QrCode</b>
                     </dd>
                   
@@ -117,12 +117,19 @@
                          <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div> <br/>
                          <button onclick="window.print();" class="noPrint btn btn-success"><i class="glyphicon glyphicon-print"></i> Print </button>
                     </dd>
+
+                    
                       <dd class = "col-sm-6 onlyPrint">
                         @Html.DisplayFor(model => model.Material_no)
                     </dd>
                     <dd class = "col-sm-6 onlyPrint" >
                         @Html.DisplayFor(model => model.Short_desc)
                     </dd>
+                   
+                   
+                    
+                  
+
 
             </div>
 
@@ -131,10 +138,7 @@
 </div>
 <div>
 
-
-
      <hr />
-   
     <a asp-action="Index" class="btn btn-danger noPrint" >Back </a>
 </div>
 
@@ -167,4 +171,46 @@ $("#text").
 			makeCode();
 		}
 	});
+
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var img = new Image();
+img.src = "/images/@Model.File_foto";
+
+
+img.onload = function () {
+   
+    // set size proportional to image
+    canvas.height = canvas.width * (img.height / img.width);
+     img.setAttribute('crossorigin', 'anonymous'); 
+     img.crossOrigin = "anonymous"; 
+    // step 1 - resize to 50%
+    var oc = document.createElement('canvas'),
+        octx = oc.getContext('2d');
+
+    oc.width = img.width * 0.7;
+    oc.height = img.height * 0.7;
+    octx.drawImage(img, 0, 0, oc.width, oc.height);
+  
+    // step 2
+    octx.drawImage(oc, 0, 0, oc.width * 0.7, oc.height * 0.7);
+
+    // step 3, resize to final size
+    ctx.drawImage(oc, 0, 0, oc.width * 0.7, oc.height * 0.7,
+    0, 0, canvas.width, canvas.height);
+   
+    // console.log(info);
+}
+
+
+function download_image(){
+  
+  image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  var link = document.createElement('a');
+  link.download = "my-image.png";
+  link.href = image;
+  link.click();
+
+}
 </script>
