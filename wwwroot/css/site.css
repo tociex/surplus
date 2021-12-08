@@ -7,7 +7,16 @@ for details on configuring this project to bundle and minify static web assets. 
   .onlyPrint {
     display: none;
    }
+
+  .logonya{
+     float:right;
+   }
 }
+
+
+ @media screen and (max-width: 800px) {
+         
+     }
 
 @media print {
   .noPrint{
